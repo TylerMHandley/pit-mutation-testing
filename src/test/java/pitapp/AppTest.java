@@ -16,11 +16,11 @@ public class AppTest {
         assertTrue(App.isAnagram("listen", "silent"));
     }
     @Test
-    public void testSadderPath(){
+    public void testSadPath(){
         assertFalse(App.isAnagram("Tyler", "Handley"));
     }
     @Test
-    public void testSadPath(){
+    public void testSadderPath(){
         assertFalse(App.isAnagram("Hunter", "Murphy"));
     }
 }
