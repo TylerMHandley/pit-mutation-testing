@@ -1,6 +1,6 @@
 # pit-mutation-testing
 
-A demo for a presentation about the ![PIT testing tool](https://pitest.org/), prepared for CS 6501: Analysis of Software Artifacts.  
+A demo for a presentation about the ![PIT testing tool](https://pitest.org/), prepared for CS 6501: Analysis of Software Artifacts and given on October 1st, 2019.  
 
 Building the project requires ![Apache Maven](https://maven.apache.org/).
 
