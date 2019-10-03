@@ -38,7 +38,7 @@ As a third option, you can use an IDE/text editor with built in maven support. F
 ![Maven Custom Command Using VS Code](custom_maven_cmd_vscode.png)
 ![Running a Custom Maven Command Using VS Code](running_maven_command.png)
 
-If we run this command on the code as it is in the repository, the project will build and run PIT. We’ll notice that we get something similar to the following output:
+If we run this command on the code as it is in the repository, the project will build and run PIT. You should get something similar to the following output:
 
 ```
 >> Generated 12 mutations Killed 10 (83%)
@@ -50,11 +50,11 @@ If we run this command on the code as it is in the repository, the project will 
 [INFO] Finished at: 2019-10-02T21:20:40-04:00
 [INFO] ------------------------------------------------------------------------
 ```
-Our mutators generated 12 mutations, but our test only killed 10 of them. There must be a problem with our test suite of 1 test (who would have guessed?). PIT automatically generates an HTML coverage report of this run in the `target/pit-reports` folder. These reports are in folders labelled by the date and time that you ran the coverage command with the format `YYYYMMDDHHMM`.
+Our mutators generated 12 mutations, but our test only killed 10 of them. There must be a problem with our test suite of 1 test (who would have guessed?). PIT automatically generates an HTML coverage report of this run in the `target/pit-reports` folder. These reports are in folders labelled by the date and time that you ran the coverage command with the format `YYYYMMDDHHMM`. These coverage reports give us a detailed rundown of the adequacy of our test suite.
 
 Inside the report folder, `index.html` will show us the statement and mutant coverage of our tests across all files tested. Additionally, PIT creates a folder for each package tested, along with coverage html files for each file tested. These files are split into 3 sections:
 * A line-by-line report of the lines covered by our test suite. Every line from which a surviving mutant was generated is highlighted red.
-* A **Mutations** section which contains the mutations generated for each line, as well as information on whether they were killed by our test suite, survived, or highlighted a line that contained no coverage in our test suite.
+* A **Mutations** section which contains the mutations generated for each line, as well as information on whether they were killed by our test suite, survived, or mutated a line that contained no coverage in our test suite.
 * A **Active Mutators** section which contains which kinds of mutators were applied to the code being tested.
 * A **Tests Examined** section, which lists all test cases used in generating the report for this class.
 
@@ -62,7 +62,7 @@ For example, in our demo, `pitapp/App.java.html` has lines 16 and 31 highlighted
 
 ![Code Coverage Report](coverage_output_code.png)
 
-Specifically, the mutation generated for line 16 indicates that our test suite does not cover this line at all, and the surviving mutation at line 31 that replaces our `.equals()` call with a “true” value indicating that we do not have a test case that covers the path where we should return “false” from our method.
+Specifically, the mutation generated for line 16 indicates that our test suite does not cover this line at all, and the surviving mutation at line 31 that replaces our `.equals()` call with a “true” value indicates that we do not have a test case that covers the path where we should return “false” from our method.
 
 ![Mutations from the First Round of Coverage](coverage_output_mutations.png)
 
@@ -98,5 +98,5 @@ Additionally, the PIT testing tool performs two other methods to increase the ex
     * For some of the mutations we could, but since the mutants are created in memory it very well may be faster to simply run the relevant tests instead of attempting to build a dependency graph.  
 
 * How do you know if a test covers a particular mutation?
-    * The answer that I provided in class was that I believe that during the build process before mutation testing PIT would first run the tests to first acquire coverage information. Professor Elbaum added that for many tools mutations have access to previous coverage reports, since the mutations are run many times. The FAQ pages says “Per test case line coverage information is first gathered and all tests that do not exercise the mutated line of code are discarded.” Unfortunately, this is somewhat ambiguous. 
+    * The answer that we provided in class was that we believe that during the build process before mutation testing PIT would first run the tests to first acquire coverage information. Professor Elbaum added that for many tools mutations have access to previous coverage reports, since the mutations are run many times. The FAQ pages says “Per test case line coverage information is first gathered and all tests that do not exercise the mutated line of code are discarded.” Unfortunately, this is somewhat ambiguous. 
 
